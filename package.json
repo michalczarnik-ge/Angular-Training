@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=/Angular-Training/",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "gh-pages -d dist/facebook"
+    "predeploy": "ng build  --base-href=/Angular-Training/",
+    "deploy": "gh-pages -d dist/facebook",
+    "postdeploy": "echo Application was successfully deployed"
   },
   "private": true,
   "dependencies": {
