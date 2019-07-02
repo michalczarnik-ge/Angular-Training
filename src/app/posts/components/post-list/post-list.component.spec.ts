@@ -27,7 +27,7 @@ describe('PostListComponent', () => {
 
   it('should create', () => {
     fixture.detectChanges();
-    component.postList = [];
+    component.posts = [];
     expect(component).toBeTruthy();
   });
 });
