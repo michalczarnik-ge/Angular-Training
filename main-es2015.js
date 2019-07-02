@@ -207,7 +207,9 @@ let CoreRoutingModule = class CoreRoutingModule {
 };
 CoreRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, {
+                useHash: true
+            })],
         exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
     })
 ], CoreRoutingModule);
@@ -544,10 +546,12 @@ let HighlightDirective = class HighlightDirective {
     }
     onMouseOverHandler() {
         // this.el.nativeElement.classList.add('border-primary')
+        this.renderer.addClass(this.el.nativeElement, "border");
         this.renderer.addClass(this.el.nativeElement, "border-primary");
     }
     onMouseLeaveHandler() {
         // this.el.nativeElement.classList.remove('border-primary')
+        this.renderer.removeClass(this.el.nativeElement, "border");
         this.renderer.removeClass(this.el.nativeElement, "border-primary");
     }
 };

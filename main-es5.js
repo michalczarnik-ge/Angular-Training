@@ -211,7 +211,9 @@ var CoreRoutingModule = /** @class */ (function () {
     }
     CoreRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, {
+                    useHash: true
+                })],
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
         })
     ], CoreRoutingModule);
@@ -565,10 +567,12 @@ var HighlightDirective = /** @class */ (function () {
     }
     HighlightDirective.prototype.onMouseOverHandler = function () {
         // this.el.nativeElement.classList.add('border-primary')
+        this.renderer.addClass(this.el.nativeElement, "border");
         this.renderer.addClass(this.el.nativeElement, "border-primary");
     };
     HighlightDirective.prototype.onMouseLeaveHandler = function () {
         // this.el.nativeElement.classList.remove('border-primary')
+        this.renderer.removeClass(this.el.nativeElement, "border");
         this.renderer.removeClass(this.el.nativeElement, "border-primary");
     };
     HighlightDirective.ctorParameters = function () { return [
