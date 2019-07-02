@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostListItemComponent } from './post-list-item.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('PostListItemComponent', () => {
   let component: PostListItemComponent;
@@ -9,7 +10,8 @@ describe('PostListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostListItemComponent ]
+      declarations: [ PostListItemComponent ],
+      imports: [SharedModule]
     })
     .compileComponents();
   }));
