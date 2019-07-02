@@ -16,10 +16,18 @@ describe('PostListItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PostListItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.post = {
+      id: 'fake-id',
+      body:'fake-body', 
+      author: {
+        id: 'fake-id-inside',
+        name: 'fake-name' 
+      }
+    };
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

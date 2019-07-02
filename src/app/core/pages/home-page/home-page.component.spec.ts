@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageComponent } from './home-page.component';
+import { PostListComponent } from 'src/app/posts/components/post-list/post-list.component';
+import { PostsModule } from 'src/app/posts/posts.module';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -8,7 +10,8 @@ describe('HomePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
+      declarations: [ HomePageComponent],
+      imports: [ PostsModule]
     })
     .compileComponents();
   }));
