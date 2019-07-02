@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { PostsService } from './posts.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { environment } from 'src/environments/environment';
+import { IPost } from '../interfaces/post.interface';
 
 describe('PostsService', () => {
   let service = null;
@@ -37,5 +38,22 @@ describe('PostsService', () => {
       
       expect(posts.length).toEqual(1);
     });
-  })
+  });
+
+  describe("getPost", () => {
+    it('getPost: should be defined', () => {
+      expect(service.getPost).toEqual(jasmine.any(Function));
+    });
+
+    it('getPost: should make http request', async () => {
+      const postID = "fake-id";
+      const server = httpMock.expectOne(environment.postsUrl);
+      const response = service.getPost('fake-id');
+      server.flush({posts: [
+        { id: postID, body: "fake-body" }
+      ]});
+      const post = await response as IPost;
+      expect(post.id).toEqual(postID);
+    });
+  });
 });

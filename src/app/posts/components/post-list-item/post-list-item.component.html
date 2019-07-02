@@ -5,7 +5,9 @@
 >
     <div class='card-header'>
         <h5 class="card-title">{{post.author.name}}</h5>
-        <small>{{ post.created_time | myDate }}</small>
+        <a routerLink="posts/{{post.id}}">
+            <small>{{ post.created_time | myDate }}</small>
+        </a>
     </div>
     <img
         *ngIf="post.images"

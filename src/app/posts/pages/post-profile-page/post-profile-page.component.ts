@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IPost } from '../../interfaces/post.interface';
+import { ActivatedRoute } from '@angular/router';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-post-profile-page',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostProfilePageComponent implements OnInit {
 
-  constructor() { }
+  post: IPost = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private postService: PostsService
+  ) { }
 
   ngOnInit() {
+    this.setupPost();
+  }
+
+  async setupPost(){
+    //pobieranie post id z urla
+    const postID = this.route.snapshot.params.postID;
+    console.log(postID);
+
+    //wziac dane o poscie z API
+    const post = await this.postService.getPost(postID);
+
+    //przypisac do zmiennej post wartosc posta
+    this.post = post;
   }
 
 }

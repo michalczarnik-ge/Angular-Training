@@ -4,7 +4,7 @@ import { PostProfilePageComponent } from './pages/post-profile-page/post-profile
 
 const routes: Routes = [
   {
-    path: '/ID',
+    path: ':postID',
     component: PostProfilePageComponent
    }
 ];
