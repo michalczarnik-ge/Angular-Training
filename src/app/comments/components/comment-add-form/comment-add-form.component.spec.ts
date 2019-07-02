@@ -5,6 +5,7 @@ import { CommentAddFormComponent } from './comment-add-form.component';
 describe('CommentAddFormComponent', () => {
   let component: CommentAddFormComponent;
   let fixture: ComponentFixture<CommentAddFormComponent>;
+  let $component: any; 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,10 +17,15 @@ describe('CommentAddFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CommentAddFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    $component = fixture.nativeElement;
+  });
+
+  afterEach(() => {
+    $component.remove();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

@@ -5,6 +5,7 @@ import { CommentListItemComponent } from './comment-list-item.component';
 describe('CommentListItemComponent', () => {
   let component: CommentListItemComponent;
   let fixture: ComponentFixture<CommentListItemComponent>;
+  let $component: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,10 +17,15 @@ describe('CommentListItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CommentListItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    $component = fixture.nativeElement;
+  });
+
+  afterEach(() => {
+    $component.remove();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

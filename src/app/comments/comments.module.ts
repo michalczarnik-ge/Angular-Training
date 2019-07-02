@@ -8,6 +8,7 @@ import { CommentAddFormComponent } from './components/comment-add-form/comment-a
   declarations: [CommentListComponent, CommentListItemComponent, CommentAddFormComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [CommentListComponent, CommentListItemComponent, CommentAddFormComponent]
 })
 export class CommentsModule { }
