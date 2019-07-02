@@ -48,7 +48,7 @@ describe('PostsService', () => {
     it('getPost: should make http request', async () => {
       const postID = "fake-id";
       const server = httpMock.expectOne(environment.postsUrl);
-      const response = service.getPost('fake-id');
+      const response = service.getPost(postID);
       server.flush({posts: [
         { id: postID, body: "fake-body" }
       ]});
