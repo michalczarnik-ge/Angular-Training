@@ -52,7 +52,7 @@ module.exports = " <nav class=\"navbar bg-primary\">\n    <ul class=\"nav nav-pi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-post-list></app-post-list>"
+module.exports = "<app-post-list\r\n    [posts]=\"posts\"\r\n></app-post-list>"
 
 /***/ }),
 
@@ -85,7 +85,7 @@ module.exports = "<div class=\"card\" style=\"width: 18rem;\" appHighlight>\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-post-list-item\n    *ngFor=\"let item of postList\"\n    [post]=\"item\"></app-post-list-item>"
+module.exports = "<app-post-list-item\n    *ngFor=\"let item of posts\"\n    [post]=\"item\"></app-post-list-item>"
 
 /***/ }),
 
@@ -293,13 +293,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageComponent", function() { return HomePageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_posts_services_posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/posts/services/posts.service */ "./src/app/posts/services/posts.service.ts");
+
 
 
 let HomePageComponent = class HomePageComponent {
-    constructor() { }
+    constructor(postsService) {
+        this.postsService = postsService;
+        this.posts = null;
+    }
     ngOnInit() {
+        console.log('ngOnOnit');
+        this.setupPosts();
+    }
+    ngOnDestroy() {
+        console.log('ngOnDestroy');
+    }
+    setupPosts() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.posts = yield this.postsService.getPosts();
+        });
     }
 };
+HomePageComponent.ctorParameters = () => [
+    { type: src_app_posts_services_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"] }
+];
 HomePageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-home-page',
@@ -428,19 +446,14 @@ __webpack_require__.r(__webpack_exports__);
 
 let PostListComponent = class PostListComponent {
     constructor() {
-        this.postList = [
-            { id: '214', body: 'Mam fajnego psa', author: { name: "Piotr" } },
-            { id: '215', body: 'Mam fajnego psa 2', author: { name: "Michal" } },
-            { id: '216', body: 'Mam fajnego psa 3', author: { name: "Dominik" } },
-            { id: '217', body: 'Mam fajnego psa 4', author: { name: "Adam" } },
-            { id: '218', body: 'Mam fajnego psa 5', author: { name: "Grzegorz" } },
-            { id: '219', body: 'Mam fajnego psa 6', author: { name: "Dorota" } },
-            { id: '210', body: 'Mam fajnego psa 7 ', author: { name: "Jan" } },
-        ];
+        this.posts = null;
     }
     ngOnInit() {
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], PostListComponent.prototype, "posts", void 0);
 PostListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-post-list',
@@ -500,6 +513,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_post_list_post_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/post-list/post-list.component */ "./src/app/posts/components/post-list/post-list.component.ts");
 /* harmony import */ var _components_post_list_item_post_list_item_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/post-list-item/post-list-item.component */ "./src/app/posts/components/post-list-item/post-list-item.component.ts");
 /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
 
 
 
@@ -516,10 +531,48 @@ PostsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _posts_routing_module__WEBPACK_IMPORTED_MODULE_3__["PostsRoutingModule"],
-            _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"]
+            _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"]
         ]
     })
 ], PostsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/posts/services/posts.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/posts/services/posts.service.ts ***!
+  \*************************************************/
+/*! exports provided: PostsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsService", function() { return PostsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let PostsService = class PostsService {
+    constructor(http) {
+        this.http = http;
+    }
+    getPosts() {
+        return this.http.get('/assets/posts.json').toPromise();
+    }
+};
+PostsService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], PostsService);
 
 
 
