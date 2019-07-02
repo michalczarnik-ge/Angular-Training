@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "ng build  --base-href=/Angular-Training/",
-    "deploy": "gh-pages -d dist/facebook",
+    "deploy": "cross-env NODE_DEBUG=gh-pages gh-pages -d dist/facebook",
     "postdeploy": "echo Application was successfully deployed"
   },
   "private": true,
@@ -36,6 +36,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cross-env": "^5.2.0",
     "gh-pages": "^2.0.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
