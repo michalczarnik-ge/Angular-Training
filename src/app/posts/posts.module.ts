@@ -6,9 +6,10 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PostProfilePageComponent } from './pages/post-profile-page/post-profile-page.component';
 
 @NgModule({
-  declarations: [PostListComponent, PostListItemComponent],
+  declarations: [PostListComponent, PostListItemComponent, PostProfilePageComponent],
   exports: [PostListComponent, PostListItemComponent],
   imports: [
     CommonModule,
