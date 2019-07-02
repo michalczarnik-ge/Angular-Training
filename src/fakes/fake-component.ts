@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-fake',
     template: '<div appHighlight></div>'
 })
-export class FakeComponents{
+export class FakeComponent{
 
 }

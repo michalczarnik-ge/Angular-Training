@@ -8,12 +8,14 @@ export class HighlightDirective {
   @HostListener('mouseover') onMouseOverHandler(){
     // this.el.nativeElement.classList.add('border-primary')
 
+    this.renderer.addClass(this.el.nativeElement, "border");
     this.renderer.addClass(this.el.nativeElement, "border-primary");
   }
 
   @HostListener('mouseleave') onMouseLeaveHandler(){
     // this.el.nativeElement.classList.remove('border-primary')
 
+    this.renderer.removeClass(this.el.nativeElement, "border");
     this.renderer.removeClass(this.el.nativeElement, "border-primary");
   }
 
