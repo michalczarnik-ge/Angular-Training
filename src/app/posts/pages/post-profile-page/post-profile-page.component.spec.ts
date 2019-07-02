@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CommentsModule } from 'src/app/comments/comments.module';
 
 describe('PostProfilePageComponent', () => {
   let component: PostProfilePageComponent;
@@ -15,7 +16,7 @@ describe('PostProfilePageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PostProfilePageComponent ],
-      imports: [RouterTestingModule, HttpClientTestingModule, SharedModule]
+      imports: [RouterTestingModule, HttpClientTestingModule, SharedModule, CommentsModule]
     })
     .compileComponents();
   }));
