@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { PostsService } from './posts.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
+import { environment } from 'src/environments/environment';
 
 describe('PostsService', () => {
   let service = null;
@@ -28,7 +29,7 @@ describe('PostsService', () => {
 
     it('getPosts: should make http request', async () => {
       const response = service.getPosts(); //Promise
-      const server = httpMock.expectOne('/assets/posts.json');
+      const server = httpMock.expectOne(environment.postsUrl);
       server.flush([
         { id: "fake-id", body: "fake-body" }
       ]);
