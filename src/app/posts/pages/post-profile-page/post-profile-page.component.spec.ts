@@ -10,6 +10,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('PostProfilePageComponent', () => {
   let component: PostProfilePageComponent;
   let fixture: ComponentFixture<PostProfilePageComponent>;
+  let $component: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,6 +23,11 @@ describe('PostProfilePageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PostProfilePageComponent);
     component = fixture.componentInstance;
+    $component = fixture.nativeElement;
+  });
+
+  afterEach(() => {
+    $component.remove();
   });
 
   it('should create', () => {
