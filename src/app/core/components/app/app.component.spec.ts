@@ -4,6 +4,10 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from '../menu/menu.component';
 
 describe('AppComponent', () => {
+  let app: any;
+  let $app: any;
+  let fixture: any;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -15,9 +19,17 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.debugElement.componentInstance;
+    $app = fixture.debugElement.nativeElement;
+  });
+
+  afterEach(() => {
+    $app.remove();
+  })
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 

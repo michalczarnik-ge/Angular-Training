@@ -7,6 +7,7 @@ import { PostsModule } from 'src/app/posts/posts.module';
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
+  let $component: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,10 +20,15 @@ describe('HomePageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    $component = fixture.nativeElement;
+  });
+
+  afterEach(() => {
+    $component.remove();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });
