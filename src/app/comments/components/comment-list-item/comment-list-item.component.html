@@ -1,1 +1,16 @@
-<p>comment-list-item works!</p>
+<ng-container *ngIf="comment">
+
+    <div class="media border p-2 my-2">
+        <img
+            [src]="getCommentAuthorAvatarUrl()"
+            class="mr-3"
+            alt
+        >
+        <div class="media-body">
+            <p class="comment-body">
+                {{comment.body}}
+            </p>
+        </div>
+    </div>
+
+</ng-container>

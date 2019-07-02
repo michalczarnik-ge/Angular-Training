@@ -15,4 +15,10 @@ export class CommentListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  getCommentAuthorAvatarUrl(){
+    if(this.comment.author)
+        return this.comment.author.avatar_url;
+    return 'http://placeskull.com/50/50/646D7E';
+  }
+
 }
