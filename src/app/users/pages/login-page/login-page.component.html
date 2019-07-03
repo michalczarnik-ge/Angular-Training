@@ -1,1 +1,36 @@
-<p>login-page works!</p>
+<h2>Logowanie</h2>
+<app-loader *ngIf="loginOngoing"></app-loader>
+<p
+    class="alert alert-danger"
+    *ngIf="loginError"
+>
+    {{loginError}}
+</p>
+<p
+    class="alert alert-success"
+    *ngIf="loginSuccessfull"
+>
+    Zalogowanie przebieglo pomyslnie
+</p>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" *ngIf="!loginSuccessfull">
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="user.email"
+            name="email"
+            placeholder="email"
+        >
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="password"
+            [(ngModel)]="user.password"
+            name="password"
+            placeholder="password"
+        >
+    </div>
+
+    <button class="btn btn-primary">Zaloguj się</button>
+</form>
