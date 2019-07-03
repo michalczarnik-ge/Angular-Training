@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: '../posts/posts.module#PostsModule'
   },
   {
+    path: 'users',
+    loadChildren: () => import('../users/users.module').then(_ => _.UsersModule)
+  },
+  {
     path: '**',
     component: NotFoundPageComponent
   }

@@ -1,0 +1,65 @@
+<h2>Rejestracja</h2>
+<app-loader *ngIf="registrationOngoing"></app-loader>
+<p
+    class="alert alert-danger"
+    *ngIf="registrationError"
+>
+    {{registrationError}}
+</p>
+<p
+    class="alert alert-success"
+    *ngIf="registrationSuccessful"
+>
+    Rejestracja zakończona pomyślnie
+</p>
+<form
+    [formGroup]="registerForm"
+    (submit)="onSubmit()" *ngIf="!registrationSuccessful"
+>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="text"
+            name="name"
+            formControlName="name"
+            placeholder="name"
+        >
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="email"
+            name="email"
+            formControlName="email"
+            placeholder="email"
+        >
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="password"
+            name="password"
+            formControlName="password"
+            placeholder="password"
+        >
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="confirmPassword"
+        >
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="url"
+            name="avatarUrl"
+            formControlName="avatarUrl"
+            placeholder="avatarUrl"
+        >
+    </div>
+    <button class="btn btn-primary">Zarejestruj się</button>
+</form>

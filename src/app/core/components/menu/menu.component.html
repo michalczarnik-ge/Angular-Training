@@ -1,4 +1,4 @@
- <nav class="navbar bg-primary">
+ <nav class="navbar bg-primary mb-3">
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link text-white" routerLink="/"
@@ -6,7 +6,13 @@
             [routerLinkActiveOptions]="{exact:true}">Strona główna</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/404" routerLinkActive="bg-danger">Strona 404</a>
+            <a class="nav-link text-white" routerLink="/users/register" routerLinkActive="bg-danger">Zarejestruj sie</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/users/login" routerLinkActive="bg-danger">Zaloguj sie</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/users/profile" routerLinkActive="bg-danger">Moj profil</a>
         </li>
     </ul>
 </nav>
