@@ -1,0 +1,24 @@
+<nav class="navbar bg-primary mb-3">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a
+                class="nav-link text-white"
+                routerLink="/user/profile/details"
+                routerLinkActive="bg-danger"
+                [routerLinkActiveOptions]="{exact:true}"
+            >
+                Szczegóły
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+                class="nav-link text-white"
+                routerLink="/user/profile/posts"
+                routerLinkActive="bg-danger"
+                [routerLinkActiveOptions]="{exact:true}"
+            >
+                Posty użytkownika
+            </a>
+        </li>
+    </ul>
+</nav>

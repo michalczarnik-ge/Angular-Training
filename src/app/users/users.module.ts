@@ -7,8 +7,11 @@ import { LogoutPageComponent } from './pages/logout-page/logout-page.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SharedModule } from '../shared/shared.module';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserPostListComponent } from './components/user-post-list/user-post-list.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 @NgModule({
-  declarations: [RegisterPageComponent, LoginPageComponent, UserProfilePageComponent, LogoutPageComponent],
+  declarations: [RegisterPageComponent, LoginPageComponent, UserProfilePageComponent, LogoutPageComponent, UserDetailsComponent, UserPostListComponent, UserMenuComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
