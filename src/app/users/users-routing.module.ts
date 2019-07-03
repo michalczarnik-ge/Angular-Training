@@ -4,6 +4,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoutPageComponent } from './pages/logout-page/logout-page.component';
 import { UserProfilePageComponent } from './pages/user-profile-page/user-profile-page.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserPostListComponent } from './components/user-post-list/user-post-list.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,20 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: UserProfilePageComponent
+    children: [
+      {
+        path: '',
+        component: UserProfilePageComponent
+      },
+      {
+        path: 'details',
+        component: UserDetailsComponent
+      },
+      {
+        path: 'posts',
+        component: UserPostListComponent
+      }
+    ]
   }
 ];
 
