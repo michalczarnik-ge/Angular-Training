@@ -3,23 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { IPostList } from '../interfaces/post-list.interface';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { IPost } from '../interfaces/post.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-
   constructor(
     private http: HttpClient
   ) {
   }
 
   getPosts(): Promise<IPostList> {
-    return this.http.get<{posts: IPostList}>(environment.postsUrl)
-    .pipe(
-      map(response => response.posts)
-    )
-    .toPromise();
+    return this.http.get<IPostList>(environment.postsUrl).toPromise();
   }
 
   async getPost(postID){
@@ -28,5 +24,9 @@ export class PostsService {
       return post.id === postID
     });
     return post;
+  }
+
+  addPost(post: IPost) {
+    return this.http.post(environment.postsUrl, post).toPromise();
   }
 }

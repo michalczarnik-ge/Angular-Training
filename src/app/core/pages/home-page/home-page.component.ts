@@ -21,16 +21,23 @@ export class HomePageComponent implements OnInit {
     this.setupPosts();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     console.log('ngOnDestroy');
   }
 
-  async setupPosts(){
+  async setupPosts() {
     this.posts = await this.postsService.getPosts();
   }
 
-  onAddPost(post: IPost){
+  async onAddPost(post: IPost) {
     console.log("On add post", post);
+    this.posts.unshift(post);
+    try {
+      await this.postsService.addPost(post);
+    }
+    catch (e) {
+      console.warn(e);
+    }
   }
 
 }

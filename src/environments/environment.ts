@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  postsUrl: '/assets/posts.json',
+  postsUrl: 'https://test-angular-facebook-backend.herokuapp.com/posts',
   usersUrl: 'https://test-angular-facebook-backend.herokuapp.com/users'
 };
 
