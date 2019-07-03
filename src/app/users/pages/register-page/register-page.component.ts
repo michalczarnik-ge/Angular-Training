@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import uuid from 'uuid';
+
 import { UsersService } from '../../services/users.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-register-page',
@@ -40,7 +44,8 @@ export class RegisterPageComponent implements OnInit {
     console.log(form);
 
     try {
-      await this.usersService.register(form);
+      const user = RegisterPageComponent.parseUserForm(form);
+      await this.usersService.register(user);
       this.registrationSuccessful = true;
     } catch (e) {
       console.log(e);
@@ -48,6 +53,16 @@ export class RegisterPageComponent implements OnInit {
     } finally {
       this.registrationOngoing = false;
     }
+  }
+
+  static parseUserForm(form: any): IUser {
+    return {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+      avatar_url: form.avatarUrl,
+      id: uuid()
+    };
   }
 
 }

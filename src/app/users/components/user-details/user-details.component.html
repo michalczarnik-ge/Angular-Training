@@ -1,1 +1,20 @@
-<p>user-details works!</p>
+<app-user-menu></app-user-menu>
+
+<div
+    class="card"
+>
+    <img
+        class="card-img-top"
+        src="{{user?.avatar_url}}"
+        alt="Avatar"
+    >
+    <div class="card-body">
+        <h5 class="card-title">{{user?.name}}</h5>
+        <a
+            routerLink="/users/remove"
+            class="btn btn-danger"
+        >
+            Usun Konto
+        </a>
+    </div>
+</div>

@@ -25,7 +25,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: UserProfilePageComponent
+        component: UserProfilePageComponent,
+        redirectTo: 'details'
       },
       {
         path: 'details',
