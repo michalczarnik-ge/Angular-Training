@@ -28,4 +28,8 @@ export class HomePageComponent implements OnInit {
     this.posts = await this.postsService.getPosts();
   }
 
+  onAddPost(){
+    console.log("On add post");
+  }
+
 }

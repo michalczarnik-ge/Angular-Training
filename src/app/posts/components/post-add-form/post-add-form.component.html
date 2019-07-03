@@ -1,0 +1,18 @@
+<form [formGroup]="addForm" (submit)="onSubmit()">
+    <div class="form-group">
+        <textarea
+            class="form-control"
+            name="body"
+            rows="5"
+            [class.is-invalid]="body.invalid && body.dirty"
+            formControlName="body"
+            placeholder="Wassup?!"
+        ></textarea>
+    </div>
+    <button
+        [disabled]="addForm.invalid"
+        class="btn btn-primary"
+    >
+        Dodaj post
+    </button>
+</form>
