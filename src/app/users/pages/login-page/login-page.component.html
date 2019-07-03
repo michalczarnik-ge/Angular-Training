@@ -20,6 +20,9 @@
             [(ngModel)]="user.email"
             name="email"
             placeholder="email"
+            required
+            #email="ngModel"
+            [class.is-invalid]="email.invalid && email.dirty"
         >
     </div>
     <div class="form-group">
@@ -29,8 +32,11 @@
             [(ngModel)]="user.password"
             name="password"
             placeholder="password"
+            required
+            #password="ngModel"
+            [class.is-invalid]="password.invalid && password.dirty"
         >
     </div>
 
-    <button class="btn btn-primary">Zaloguj się</button>
+    <button class="btn btn-primary" [disabled]="loginForm.invalid">Zaloguj się</button>
 </form>

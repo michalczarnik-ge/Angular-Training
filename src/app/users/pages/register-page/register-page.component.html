@@ -22,6 +22,7 @@
             type="text"
             name="name"
             formControlName="name"
+            [class.is-invalid]="name.invalid && name.dirty"
             placeholder="name"
         >
     </div>
@@ -31,6 +32,7 @@
             type="email"
             name="email"
             formControlName="email"
+            [class.is-invalid]="email.invalid && email.dirty"
             placeholder="email"
         >
     </div>
@@ -40,6 +42,7 @@
             type="password"
             name="password"
             formControlName="password"
+            [class.is-invalid]="password.invalid && password.dirty"
             placeholder="password"
         >
     </div>
@@ -49,6 +52,7 @@
             type="password"
             name="confirmPassword"
             formControlName="confirmPassword"
+            [class.is-invalid]="confirmPassword.invalid && confirmPassword.dirty"
             placeholder="confirmPassword"
         >
     </div>
@@ -58,8 +62,10 @@
             type="url"
             name="avatarUrl"
             formControlName="avatarUrl"
+            [class.is-invalid]="avatarUrl.invalid && avatarUrl.dirty"
             placeholder="avatarUrl"
         >
     </div>
-    <button class="btn btn-primary">Zarejestruj się</button>
+    <button class="btn btn-primary"
+    [disabled]="registerForm.invalid">Zarejestruj się</button>
 </form>
