@@ -29,17 +29,17 @@ export class PostAddFormComponent implements OnInit {
 
   onSubmit(){
     const form = this.addForm.getRawValue();
-    const post = PostAddFormComponent.parsePostForm(form, this.userService);
+    const post = PostAddFormComponent.parsePostForm(form, this.userService.getCurrentUser());
     console.log('Add post form: on submit', post);
     this.addPost.next(post);
   }
 
-  static parsePostForm(form, userService: UsersService) :IPost{
+  static parsePostForm(form, author) :IPost{
     return {
       body: form.body,
       id: uuid(),
       created_time: new Date().toUTCString(),
-      author: userService.getCurrentUser(),
+      author,
       images: []
     }
   }
