@@ -16,7 +16,7 @@ export class UserDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.userService.$user.getValue();
+    this.user = this.userService.getCurrentUser();
   }
 
 }

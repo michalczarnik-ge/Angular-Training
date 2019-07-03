@@ -52,4 +52,8 @@ export class UsersService {
     }
     this.$user.next(user);
   }
+
+  getCurrentUser(){
+    return this.$user.getValue();
+  }
 }

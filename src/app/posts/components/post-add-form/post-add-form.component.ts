@@ -1,6 +1,11 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import uuid from 'uuid'
+import { IPost } from '../../interfaces/post.interface';
+import { getLocaleDateTimeFormat } from '@angular/common';
+import { UsersService } from 'src/app/users/services/users.service';
+
 @Component({
   selector: 'app-post-add-form',
   templateUrl: './post-add-form.component.html',
@@ -15,15 +20,28 @@ export class PostAddFormComponent implements OnInit {
 
   @Output() addPost = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private userService: UsersService
+  ) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
     const form = this.addForm.getRawValue();
-    console.log('Add post form: on submit', form);
-    this.addPost.next(form);
+    const post = PostAddFormComponent.parsePostForm(form, this.userService);
+    console.log('Add post form: on submit', post);
+    this.addPost.next(post);
+  }
+
+  static parsePostForm(form, userService: UsersService) :IPost{
+    return {
+      body: form.body,
+      id: uuid(),
+      created_time: new Date().toUTCString(),
+      author: userService.getCurrentUser(),
+      images: []
+    }
   }
 
 }
