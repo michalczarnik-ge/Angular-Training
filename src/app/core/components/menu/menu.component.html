@@ -1,18 +1,59 @@
- <nav class="navbar bg-primary mb-3">
+<nav class="navbar bg-primary mb-3">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/"
-            routerLinkActive="bg-danger"
-            [routerLinkActiveOptions]="{exact:true}">Strona główna</a>
+            <a
+                class="nav-link text-white"
+                routerLink="/"
+                routerLinkActive="bg-danger"
+                [routerLinkActiveOptions]="{exact:true}"
+            >
+                Strona główna
+            </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/users/register" routerLinkActive="bg-danger">Zarejestruj sie</a>
+        <li
+            class="nav-item"
+            *ngIf="!userLoggedIn"
+        >
+            <a
+                class="nav-link text-white"
+                routerLink="/users/register"
+                routerLinkActive="bg-danger"
+            >
+                Zarejestruj sie
+            </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/users/login" routerLinkActive="bg-danger">Zaloguj sie</a>
+        <li
+            class="nav-item"
+            *ngIf="!userLoggedIn"
+        >
+            <a
+                class="nav-link text-white"
+                routerLink="/users/login"
+                routerLinkActive="bg-danger"
+            >
+                Zaloguj sie
+            </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/users/profile" routerLinkActive="bg-danger">Moj profil</a>
+        <li
+            class="nav-item"
+            *ngIf="userLoggedIn"
+        >
+            <a
+                class="nav-link text-white"
+                routerLink="/users/profile"
+                routerLinkActive="bg-danger"
+            >
+                Moj profil
+            </a>
+        </li>
+        <li *ngIf="userLoggedIn">
+            <a
+                class="nav-link text-white"
+                routerLink="/users/logout"
+                routerLinkActive="bg-danger"
+            >
+                Wyloguj
+            </a>
         </li>
     </ul>
 </nav>

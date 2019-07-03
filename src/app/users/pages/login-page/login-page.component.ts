@@ -30,9 +30,11 @@ export class LoginPageComponent implements OnInit {
     console.log('onSubmit', this.user)
     this.loginOngoing=true;
     try {
-      const loginStatus = await this.userService.login(this.user.email, this.user.password);
-      if(loginStatus.status)
+      const authResponse = await this.userService.login(this.user.email, this.user.password);
+      if(authResponse.status){
+        this.userService.auth(authResponse);
         this.router.navigate(['users', 'profile']);
+      }
       else
       {
         this.loginError="Wpisz poprawne dane do logowania"  ;
