@@ -2,9 +2,10 @@
 
 <div
     class="card"
+    *ngIf="user"
 >
     <img
-        class="card-img-top"
+        class="card-img-top avatar mx-auto "
         src="{{user?.avatar_url}}"
         alt="Avatar"
     >

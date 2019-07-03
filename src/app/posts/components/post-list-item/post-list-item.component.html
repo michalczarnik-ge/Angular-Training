@@ -2,11 +2,18 @@
     class="card my-3"
     appHighlight
 >
-    <div class='card-header'>
-        <h5 class="card-title">{{post.author.name}}</h5>
-        <a routerLink="posts/{{post.id}}">
-            <small>{{ post.created_time | myDate }}</small>
-        </a>
+    <div class='card-header d-flex'>
+        <img
+            class="avatar mr-3"
+            [src]="post.author?.avatar_url"
+            alt="avatar"
+        >
+        <div>
+            <h5 class="card-title">{{post.author.name}}</h5>
+            <a routerLink="posts/{{post.id}}">
+                <small>{{ post.created_time | myDate }}</small>
+            </a>
+        </div>
     </div>
     <img
         *ngIf="post.images"
@@ -19,8 +26,7 @@
     </div>
 
     <div class="card-footer">
-        <app-comment-list [comments]="post.comments">
-        </app-comment-list>
+        <app-comment-list [comments]="post.comments"></app-comment-list>
         <app-comment-add-form></app-comment-add-form>
     </div>
 </div>
