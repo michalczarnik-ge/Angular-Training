@@ -29,4 +29,9 @@ export class PostsService {
   addPost(post: IPost) {
     return this.http.post(environment.postsUrl, post).toPromise();
   }
+
+  savePost(post: IPost) {
+    const url = `${environment.postsUrl}/${post.id}`
+    return this.http.put(url, post).toPromise();
+  }
 }

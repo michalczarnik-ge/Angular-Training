@@ -1,4 +1,4 @@
-<form [formGroup]="addForm" (submit)="onSubmit()">
+<form [formGroup]="addForm" (submit)="onSubmit()" *ngIf="author">
     <div class="form-group">
         <textarea
             class="form-control"

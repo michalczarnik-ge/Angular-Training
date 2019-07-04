@@ -1,1 +1,18 @@
-<p>comment-add-form works!</p>
+<form #commentForm="ngForm" (submit)="onSubmit(commentForm)" *ngIf="author">
+    <div class="form-group row">
+        <div class="col-9">
+            <input
+                type="text"
+                class="form-control"
+                name="body"
+                required
+                [(ngModel)]="comment.body"
+                #body="ngModel"
+                [class.is-invalid]="body.invalid && body.dirty"
+                placeholder="Dodaj komentarz"
+            >
+        </div>
+        <button class="btn btn-primary col-2">Dodaj komć</button>
+    </div>
+
+</form>

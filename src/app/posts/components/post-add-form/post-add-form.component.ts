@@ -5,6 +5,7 @@ import uuid from 'uuid'
 import { IPost } from '../../interfaces/post.interface';
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { UsersService } from 'src/app/users/services/users.service';
+import { IUser } from 'src/app/users/interfaces/user.interface';
 
 @Component({
   selector: 'app-post-add-form',
@@ -14,6 +15,7 @@ import { UsersService } from 'src/app/users/services/users.service';
 export class PostAddFormComponent implements OnInit {
 
   body = new FormControl('', [Validators.required]);
+  author: IUser = null;
   addForm = new FormGroup({
     body: this.body
   });
@@ -25,11 +27,13 @@ export class PostAddFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.author = this.userService.getCurrentUser();
+    console.log(this.author);
   }
 
   onSubmit(){
     const form = this.addForm.getRawValue();
-    const post = PostAddFormComponent.parsePostForm(form, this.userService.getCurrentUser());
+    const post = PostAddFormComponent.parsePostForm(form, this.author);
     console.log('Add post form: on submit', post);
     this.addPost.next(post);
   }
