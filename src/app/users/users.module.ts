@@ -11,8 +11,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UserPostListComponent } from './components/user-post-list/user-post-list.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { PostsModule } from '../posts/posts.module';
+import { UserRemovePageComponent } from './pages/user-remove-page/user-remove-page.component';
 @NgModule({
-  declarations: [RegisterPageComponent, LoginPageComponent, UserProfilePageComponent, LogoutPageComponent, UserDetailsComponent, UserPostListComponent, UserMenuComponent],
+  declarations: [RegisterPageComponent, LoginPageComponent, UserProfilePageComponent, LogoutPageComponent, UserDetailsComponent, UserPostListComponent, UserMenuComponent, UserRemovePageComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

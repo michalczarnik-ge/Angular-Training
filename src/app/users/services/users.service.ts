@@ -60,4 +60,11 @@ export class UsersService {
     const url = `${environment.usersUrl}/${userID}`;
     return this.http.get<IUser>(url).toPromise();
   }
+
+  async destroyCurrentUser() {
+    const currentUser = this.getCurrentUser();
+    const url = `${environment.usersUrl}/${currentUser.id}`;
+    this.logout();
+    return this.http.delete(url).toPromise();
+  }
 }

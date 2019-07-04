@@ -7,6 +7,7 @@ import { UserProfilePageComponent } from './pages/user-profile-page/user-profile
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserPostListComponent } from './components/user-post-list/user-post-list.component';
 import { OnlyForAuthUserGuard } from './guards/only-for-auth-user.guard';
+import { UserRemovePageComponent } from './pages/user-remove-page/user-remove-page.component';
 
 const routes: Routes = [
   {
@@ -40,9 +41,13 @@ const routes: Routes = [
     canActivate: [OnlyForAuthUserGuard]
   },
   {
+    path: 'remove',
+    component: UserRemovePageComponent
+  },
+  {
     path: ':userID',
     component: UserProfilePageComponent
-  }
+  },
 ];
 
 @NgModule({

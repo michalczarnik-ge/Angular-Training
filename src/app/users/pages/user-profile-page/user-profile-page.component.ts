@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/user.interface';
 
@@ -13,14 +13,20 @@ export class UserProfilePageComponent implements OnInit {
   user: IUser = null;
 
   constructor(
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private userService: UsersService
   ) { }
 
   async ngOnInit() {
-    const userID = this.router.snapshot.params.userID;
+    const userID = this.route.snapshot.params.userID;
     console.log("UserID", userID)
-    this.user = await this.userService.GetUserById(userID);
+    try{
+      this.user = await this.userService.GetUserById(userID);
+    }catch(e){
+      console.warn(e);
+      this.router.navigateByUrl("/404");
+    }
   }
 
 }
