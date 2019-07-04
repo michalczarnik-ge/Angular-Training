@@ -1,2 +1,7 @@
-<app-feed [posts]="posts">
-</app-feed>
+<p
+    class="alert alert-danger"
+    *ngIf="error"
+>
+    {{ error }}
+</p>
+<app-feed [posts]="posts"></app-feed>

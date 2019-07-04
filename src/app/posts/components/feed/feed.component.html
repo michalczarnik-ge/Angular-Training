@@ -1,3 +1,12 @@
+<app-loader
+    *ngIf="!posts"
+>
+</app-loader>
+
+<p class="alert alert-info" *ngIf="posts?.length===0">
+    Lista postów jest pusta
+</p>
+
 <app-post-add-form
     (addPost)="onAddPost($event)"
 >

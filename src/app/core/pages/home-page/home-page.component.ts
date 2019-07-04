@@ -11,6 +11,7 @@ import { IPost } from 'src/app/posts/interfaces/post.interface';
 export class HomePageComponent implements OnInit {
 
   posts: IPostList = null;
+  error: any = null;
 
   constructor(
     private postsService: PostsService
@@ -26,19 +27,11 @@ export class HomePageComponent implements OnInit {
   }
 
   async setupPosts() {
-    this.posts = await this.postsService.getPosts();
-  }
-
-  async onAddPost(post: IPost) {
-    console.log("On add post", post);
-    //Dodawanie na poczatku listy
-    this.posts.unshift(post);
-    try {
-      //Dodawanie na koncu listy
-      await this.postsService.addPost(post);
-    }
-    catch (e) {
-      console.warn(e);
+    try{
+      this.posts = await this.postsService.getPosts();
+    }catch(e){
+      this.error = e.message;
+      this.posts=[];
     }
   }
 
