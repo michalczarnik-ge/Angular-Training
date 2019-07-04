@@ -1,11 +1,7 @@
 <h2>Logowanie</h2>
 <app-loader *ngIf="loginOngoing"></app-loader>
-<p
-    class="alert alert-danger"
-    *ngIf="loginError"
->
-    {{loginError}}
-</p>
+
+<app-error [error]="loginError"></app-error>
 <p
     class="alert alert-success"
     *ngIf="loginSuccessfull"

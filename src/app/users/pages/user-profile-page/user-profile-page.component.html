@@ -1,1 +1,4 @@
-<app-user-details [user]="user"></app-user-details>
+<app-error [error]="error"></app-error>
+<ng-container *ngIf="!error">
+    <app-user-details [user]="user"></app-user-details>
+</ng-container>

@@ -11,6 +11,7 @@ import { PostsService } from '../../services/posts.service';
 export class PostProfilePageComponent implements OnInit {
 
   post: IPost = null;
+  error: any = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,16 +22,19 @@ export class PostProfilePageComponent implements OnInit {
     this.setupPost();
   }
 
-  async setupPost(){
+  async setupPost() {
     //pobieranie post id z urla
     const postID = this.route.snapshot.params.postID;
     console.log(postID);
+    try {
+      //wziac dane o poscie z API
+      const post = await this.postService.getPost(postID);
 
-    //wziac dane o poscie z API
-    const post = await this.postService.getPost(postID);
-
-    //przypisac do zmiennej post wartosc posta
-    this.post = post;
+      //przypisac do zmiennej post wartosc posta
+      this.post = post;
+    } catch (e) {
+      this.error = e.message;
+    }
   }
 
 }

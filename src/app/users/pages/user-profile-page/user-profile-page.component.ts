@@ -11,6 +11,7 @@ import { IUser } from '../../interfaces/user.interface';
 export class UserProfilePageComponent implements OnInit {
 
   user: IUser = null;
+  error: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,9 @@ export class UserProfilePageComponent implements OnInit {
       this.user = await this.userService.GetUserById(userID);
     }catch(e){
       console.warn(e);
-      this.router.navigateByUrl("/404");
+      this.error = e.message;
+      if(e && e.statusCode==404)
+        this.router.navigateByUrl("/404");
     }
   }
 
