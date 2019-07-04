@@ -35,14 +35,14 @@ const routes: Routes = [
       },
       {
         path: 'posts',
-        component: UserPostListComponent
-      }
+        component: UserPostListComponent,
+      },
+      {
+        path: 'remove',
+        component: UserRemovePageComponent
+      },
     ],
     canActivate: [OnlyForAuthUserGuard]
-  },
-  {
-    path: 'remove',
-    component: UserRemovePageComponent
   },
   {
     path: ':userID',
