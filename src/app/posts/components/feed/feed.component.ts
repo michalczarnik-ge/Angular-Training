@@ -33,9 +33,21 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  async onRemovePost(post) {
+  async onRemovePost(post, popup) {
     console.log("On remove post", post);
+    popup.payload = { post };
 
+    //pokazanie popupa
+    popup.show();
+  }
+
+  onRemovePostDismiss(popup){
+    //ukrywanie popupa
+    popup.hide();
+  }
+
+  async onRemovePostAccept(popup){
+    const { post } = popup.payload;
     try {
       await this.postsService.deletePost(post.id);
       const index = this.posts.findIndex((p) => {
@@ -44,7 +56,11 @@ export class FeedComponent implements OnInit {
       this.posts.splice(index, 1);
     } catch (e) {
       this.error = e.message;
+    } finally{
+      //ukrywanie popupa
+      popup.hide();
     }
   }
+
 
 }

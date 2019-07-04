@@ -1,11 +1,11 @@
-<app-loader
-    *ngIf="!posts"
->
-</app-loader>
+<app-loader *ngIf="!posts"></app-loader>
 
 <app-error [error]="error"></app-error>
 
-<p class="alert alert-info" *ngIf="posts?.length===0">
+<p
+    class="alert alert-info"
+    *ngIf="posts?.length===0"
+>
     Lista postów jest pusta
 </p>
 
@@ -16,5 +16,18 @@
 </app-post-add-form>
 <app-post-list
     [posts]="posts"
-    (removePost)="onRemovePost($event)"
+    (removePost)="onRemovePost($event, confirmRemovePost)"
 ></app-post-list>
+
+<app-popup #confirmRemovePost>
+    <div class="header">
+        <h5 class="modal-title">Usuwanie posta</h5>
+    </div>
+    <div class="body">
+        <p>Czy na pewno chcesz usunac posta?</p>
+    </div>
+    <div class="footer">
+        <button class="btn btn-success" (click)="onRemovePostDismiss(confirmRemovePost)">NIE</button>
+        <button class="btn btn-danger ml-2" (click)="onRemovePostAccept(confirmRemovePost)">TAK</button>
+    </div>
+</app-popup>

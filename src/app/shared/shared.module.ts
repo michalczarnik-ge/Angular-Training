@@ -6,10 +6,11 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { StorageService } from './services/storage.service';
 import { ErrorComponent } from './components/error/error.component';
 import { OnlyForAuthUserDirectiveDirective } from './directives/only-for-auth-user-directive.directive';
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
-  declarations: [HighlightDirective, MyDatePipe, LoaderComponent, ErrorComponent, OnlyForAuthUserDirectiveDirective],
-  exports: [HighlightDirective, MyDatePipe, LoaderComponent, ErrorComponent, OnlyForAuthUserDirectiveDirective ],
+  declarations: [HighlightDirective, MyDatePipe, LoaderComponent, ErrorComponent, OnlyForAuthUserDirectiveDirective, PopupComponent],
+  exports: [HighlightDirective, MyDatePipe, LoaderComponent, ErrorComponent, OnlyForAuthUserDirectiveDirective, PopupComponent ],
   imports: [
     CommonModule,
   ], 
