@@ -3,20 +3,25 @@
     appHighlight
 >
     <div class='card-header d-flex'>
-        <a routerLink="/users/{{ post.author.id }}">
+        <a routerLink="/users/{{ post.author.id }}  ">
             <img
                 class="avatar mr-3"
                 [src]="post.author?.avatar_url"
                 alt="avatar"
             >
         </a>
-        <div>
+        <div class="flex-fill">
             <h5 class="card-title">
                 <a routerLink="/users/{{ post.author.id }}">{{post.author.name}}</a>
             </h5>
             <a routerLink="posts/{{post.id}}">
                 <small>{{ post.created_time | myDate }}</small>
             </a>
+        </div>
+        <div>
+            <button class="btn btn-danger" (click)="onRemovePost()">
+                &times;
+            </button>
         </div>
     </div>
     <img

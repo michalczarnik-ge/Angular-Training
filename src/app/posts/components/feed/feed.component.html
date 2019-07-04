@@ -3,6 +3,8 @@
 >
 </app-loader>
 
+<app-error [error]="error"></app-error>
+
 <p class="alert alert-info" *ngIf="posts?.length===0">
     Lista postów jest pusta
 </p>
@@ -14,4 +16,5 @@
 </app-post-add-form>
 <app-post-list
     [posts]="posts"
+    (removePost)="onRemovePost($event)"
 ></app-post-list>

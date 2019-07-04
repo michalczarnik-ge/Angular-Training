@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
-
 @Component({
   selector: 'app-post-list-item',
   templateUrl: './post-list-item.component.html',
@@ -9,6 +8,7 @@ import { PostsService } from '../../services/posts.service';
 export class PostListItemComponent implements OnInit, OnChanges {
 
   @Input() post = null;
+  @Output() removePost = new EventEmitter();
 
   constructor(
     private postService: PostsService
@@ -33,4 +33,8 @@ export class PostListItemComponent implements OnInit, OnChanges {
     }
   }
 
+  onRemovePost(){
+    this.removePost.next(this.post);
+    console.log("on remove post");
+  }
 }
