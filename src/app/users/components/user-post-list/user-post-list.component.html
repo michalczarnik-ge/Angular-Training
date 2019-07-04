@@ -1,2 +1,6 @@
-<app-user-menu></app-user-menu>
-<app-feed [posts]="userPosts"></app-feed>
+<app-error [error]="error"></app-error>
+
+<ng-container *ngIf="userPosts">
+    <app-user-menu></app-user-menu>
+    <app-feed [posts]="userPosts"></app-feed>
+</ng-container>

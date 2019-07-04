@@ -10,6 +10,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserPostListComponent implements OnInit {
 
+  error = null;
   userPosts: IPostList = null;
   constructor(
     private postsService: PostsService,
@@ -18,11 +19,15 @@ export class UserPostListComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.userPosts = await this.postsService.getPosts();
-    const currentUser = await this.usersService.getCurrentUser();
-    this.userPosts = this.userPosts.filter((post) => {
-      return post.author.id === currentUser.id
-    });
+    try {
+      this.userPosts = await this.postsService.getPosts();
+      const currentUser = await this.usersService.getCurrentUser();
+      this.userPosts = this.userPosts.filter((post) => {
+        return post.author.id === currentUser.id
+      });
+    } catch (e) {
+      this.error = e.message;
+    }
   }
 
 }

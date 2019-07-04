@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserRemovePageComponent implements OnInit {
 
+  error:any = null;
+
   constructor(
     private userService: UsersService,
     private router: Router
@@ -30,6 +32,7 @@ export class UserRemovePageComponent implements OnInit {
       this.router.navigateByUrl('/');
     } catch (e) {
       console.warn(e);
+      this.error=e.message;
     }
   }
 }
