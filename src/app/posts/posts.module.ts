@@ -11,6 +11,7 @@ import { CommentsModule } from '../comments/comments.module';
 import { PostAddFormComponent } from './components/post-add-form/post-add-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './components/feed/feed.component';
+import { UsersModule } from '../users/users.module';
 
 @NgModule({
   declarations: [PostListComponent, PostListItemComponent, PostProfilePageComponent, PostAddFormComponent, FeedComponent],

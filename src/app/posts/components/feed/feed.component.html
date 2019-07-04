@@ -9,6 +9,7 @@
 
 <app-post-add-form
     (addPost)="onAddPost($event)"
+    *appOnlyForAuthUserDirective
 >
 </app-post-add-form>
 <app-post-list
