@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserPostListComponent } from './components/user-post-list/user-post-list.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { PostsModule } from '../posts/posts.module';
 @NgModule({
   declarations: [RegisterPageComponent, LoginPageComponent, UserProfilePageComponent, LogoutPageComponent, UserDetailsComponent, UserPostListComponent, UserMenuComponent],
   imports: [
@@ -17,7 +18,8 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
     UsersRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    PostsModule
   ]
 })
 export class UsersModule { }

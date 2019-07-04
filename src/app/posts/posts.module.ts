@@ -10,10 +10,11 @@ import { PostProfilePageComponent } from './pages/post-profile-page/post-profile
 import { CommentsModule } from '../comments/comments.module';
 import { PostAddFormComponent } from './components/post-add-form/post-add-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
-  declarations: [PostListComponent, PostListItemComponent, PostProfilePageComponent, PostAddFormComponent],
-  exports: [PostListComponent, PostListItemComponent, PostAddFormComponent],
+  declarations: [PostListComponent, PostListItemComponent, PostProfilePageComponent, PostAddFormComponent, FeedComponent],
+  exports: [PostListComponent, PostListItemComponent, PostAddFormComponent, FeedComponent],
   imports: [
     CommonModule,
     PostsRoutingModule,

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from 'src/app/posts/services/posts.service';
+import { IPostList } from 'src/app/posts/interfaces/post-list.interface';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-user-post-list',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPostListComponent implements OnInit {
 
-  constructor() { }
+  userPosts: IPostList = null;
+  constructor(
+    private postsService: PostsService,
+    private usersService: UsersService,
+  ) {
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.userPosts = await this.postsService.getPosts();
+    const currentUser = await this.usersService.getCurrentUser();
+    this.userPosts = this.userPosts.filter((post) => {
+      return post.author.id === currentUser.id
+    });
   }
 
 }
