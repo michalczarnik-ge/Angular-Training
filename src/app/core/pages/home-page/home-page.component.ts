@@ -31,8 +31,10 @@ export class HomePageComponent implements OnInit {
 
   async onAddPost(post: IPost) {
     console.log("On add post", post);
+    //Dodawanie na poczatku listy
     this.posts.unshift(post);
     try {
+      //Dodawanie na koncu listy
       await this.postsService.addPost(post);
     }
     catch (e) {

@@ -12,7 +12,7 @@
 >
     Zalogowanie przebieglo pomyslnie
 </p>
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" *ngIf="!loginSuccessfull">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!loginSuccessfull">
     <div class="form-group">
         <input
             class="form-control"
