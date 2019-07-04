@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IUser } from '../../interfaces/user.interface';
 import { UsersService } from '../../services/users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -9,14 +10,22 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  user: IUser = null;
+  @Input() user: IUser = null;
+  isAuthUserProfile: boolean = false;
 
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.user = this.userService.getCurrentUser();
+    const userID = this.route.snapshot.params.userID;
+    var authUser = this.userService.getCurrentUser();
+    if(userID)
+      this.isAuthUserProfile = (authUser && (userID===authUser.id));
+    else
+      this.isAuthUserProfile = true;
   }
 
 }

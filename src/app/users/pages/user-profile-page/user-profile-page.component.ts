@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from '../../services/users.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfilePageComponent implements OnInit {
 
-  constructor() { }
+  user: IUser = null;
 
-  ngOnInit() {
+  constructor(
+    private router: ActivatedRoute,
+    private userService: UsersService
+  ) { }
+
+  async ngOnInit() {
+    const userID = this.router.snapshot.params.userID;
+    console.log("UserID", userID)
+    this.user = await this.userService.GetUserById(userID);
   }
 
 }

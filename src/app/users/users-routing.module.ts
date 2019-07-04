@@ -26,7 +26,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: UserProfilePageComponent,
         redirectTo: 'details'
       },
       {
@@ -39,6 +38,10 @@ const routes: Routes = [
       }
     ],
     canActivate: [OnlyForAuthUserGuard]
+  },
+  {
+    path: ':userID',
+    component: UserProfilePageComponent
   }
 ];
 

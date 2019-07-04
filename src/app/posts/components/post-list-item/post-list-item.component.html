@@ -3,13 +3,17 @@
     appHighlight
 >
     <div class='card-header d-flex'>
-        <img
-            class="avatar mr-3"
-            [src]="post.author?.avatar_url"
-            alt="avatar"
-        >
+        <a routerLink="/users/{{ post.author.id }}">
+            <img
+                class="avatar mr-3"
+                [src]="post.author?.avatar_url"
+                alt="avatar"
+            >
+        </a>
         <div>
-            <h5 class="card-title">{{post.author.name}}</h5>
+            <h5 class="card-title">
+                <a routerLink="/users/{{ post.author.id }}">{{post.author.name}}</a>
+            </h5>
             <a routerLink="posts/{{post.id}}">
                 <small>{{ post.created_time | myDate }}</small>
             </a>
@@ -27,8 +31,6 @@
 
     <div class="card-footer">
         <app-comment-list [comments]="post.comments"></app-comment-list>
-        <app-comment-add-form
-            (addComment)="onAddComment($event)"
-        ></app-comment-add-form>
+        <app-comment-add-form (addComment)="onAddComment($event)"></app-comment-add-form>
     </div>
 </div>

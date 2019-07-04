@@ -10,7 +10,6 @@ import { StorageService } from 'src/app/shared/services/storage.service';
   providedIn: 'root'
 })
 export class UsersService {
-
   $user = new BehaviorSubject(null);
 
   constructor(
@@ -55,5 +54,10 @@ export class UsersService {
 
   getCurrentUser(){
     return this.$user.getValue();
+  }
+
+  async GetUserById(userID: string) {
+    const url = `${environment.usersUrl}/${userID}`;
+    return this.http.get<IUser>(url).toPromise();
   }
 }
